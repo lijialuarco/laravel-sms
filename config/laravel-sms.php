@@ -24,7 +24,7 @@ return [
     | 单位：秒
     |
     */
-    'interval' => 60,
+    'interval'        => 60,
 
     /*
     |--------------------------------------------------------------------------
@@ -39,7 +39,7 @@ return [
     | - staticRules 静态验证规则
     |
     */
-    'validation' => [
+    'validation'      => [
         'mobile' => [
             'isMobile'    => true,
             'enable'      => true,
@@ -63,7 +63,7 @@ return [
     | - maxAttempts   验证码最大尝试验证次数，超过该数值验证码自动失效，0或负数则不启用
     |
     */
-    'code' => [
+    'code'            => [
         'length'        => 6,
         'validMinutes'  => 30,
         'repeatIfValid' => false,
@@ -78,8 +78,8 @@ return [
     | 如需缓存配置，则需使用 `SmsManger::closure($closure)` 方法进行配置
     |
     */
-    'content' => function ($code, $minutes, $input) {
-        return '【蓝石创想】您收到了我的验证码:' . $code . '，有效期为' . $minutes . '分钟，请尽快告诉我,不然手机可能baozha...滴!滴!';
+    'content'         => function ($code, $minutes, $input) {
+        return '【蓝石创想】嘿,' . $code;
     },
 
     /*
@@ -103,7 +103,7 @@ return [
     | 如需缓存配置，则需使用 `SmsManger::closure($closure)` 方法对匿名函数进行配置
     |
     */
-    'templates' => [
+    'templates'       => [
     ],
 
     /*
@@ -127,8 +127,8 @@ return [
     | 如需缓存配置，则需使用 `SmsManger::closure($closure)` 方法对匿名函数进行配置
     |
     */
-    'data' => [
-        'code' => function ($code) {
+    'data'            => [
+        'code'    => function ($code) {
             return $code;
         },
         'minutes' => function ($code, $minutes) {
@@ -156,7 +156,7 @@ return [
     | - 在laravel项目的'config/cache.php'文件中可以对'Toplan\Sms\CacheStorage'进行更多个性化设置
     |
     */
-    'storage' => [
+    'storage'         => [
         'driver' => '',
         'prefix' => 'laravel_sms',
     ],
@@ -170,7 +170,7 @@ return [
     | 运行'php artisan migrate'命令可以自动生成
     |
     */
-    'dbLogs' => false,
+    'dbLogs'          => true,
 
     /*
     |--------------------------------------------------------------------------
@@ -178,7 +178,7 @@ return [
     |--------------------------------------------------------------------------
     |
     */
-    'queueJob' => 'Toplan\Sms\SendReminderSms',
+    'queueJob'        => 'Toplan\Sms\SendReminderSms',
 
     /*
     |--------------------------------------------------------------------------
@@ -186,18 +186,18 @@ return [
     |--------------------------------------------------------------------------
     |
     */
-    'notifies' => [
+    'notifies'        => [
         // 频繁请求无效的提示
-        'request_invalid' => '请求无效，请在%s秒后重试',
+        'request_invalid'    => '请求无效，请在%s秒后重试',
 
         // 验证码短信发送失败的提示
-        'sms_sent_failure' => '短信验证码发送失败，请稍后重试',
+        'sms_sent_failure'   => '短信验证码发送失败，请稍后重试',
 
         // 语音验证码发送发送成功的提示
         'voice_sent_failure' => '语音验证码请求失败，请稍后重试',
 
         // 验证码短信发送成功的提示
-        'sms_sent_success' => '短信验证码发送成功，请注意查收',
+        'sms_sent_success'   => '短信验证码发送成功，请注意查收',
 
         // 语音验证码发送发送成功的提示
         'voice_sent_success' => '语音验证码发送成功，请注意接听',

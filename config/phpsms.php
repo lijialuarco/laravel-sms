@@ -103,7 +103,7 @@ return [
         'Luosimao' => [
             //短信 API key
             //在管理中心->短信->触发发送下查看
-            'apikey' => 'aeba6d3057634387db6d330d2a8229c1',
+            'apikey' => env('LUOSIMAO_API_KEY'),
 
             //语言验证 API key
             //在管理中心->语音->语音验证下查看
